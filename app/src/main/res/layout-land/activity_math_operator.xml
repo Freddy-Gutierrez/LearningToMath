@@ -11,10 +11,13 @@
         android:layout_width="match_parent"
         android:layout_height="298dp"
         android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="0dp"
         android:scaleType="fitXY"
-        app:srcCompat="@drawable/school"
-        android:layout_alignParentLeft="true" />
+        app:srcCompat="@drawable/school" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -78,5 +81,18 @@
         android:textStyle="bold"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="14dp" />
+
+    <Button
+        android:id="@+id/button_freeplay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/backButton"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:onClick="isFreePlay"
+        android:text="Free Play : Off"
+        android:textStyle="bold" />
 
 </RelativeLayout>

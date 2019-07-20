@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -27,6 +28,7 @@ public class MathGameplay extends AppCompatActivity {
     Button three;
     Button playAgain;
     Button backToMain;
+    Button centerMainMenu;
 
     //objects that will be used in game logic
     Random rand = new Random();
@@ -52,7 +54,7 @@ public class MathGameplay extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_math_gameplay);
-        setTitle("EASY");
+        setTitle(getIntent().getStringExtra("title"));
 
         //create table
         myDatabase = new DataBaseHelper(this);
@@ -69,6 +71,7 @@ public class MathGameplay extends AppCompatActivity {
         three = (Button)findViewById(R.id.button3);
         playAgain = (Button)findViewById(R.id.playAgainButton);
         backToMain = (Button)findViewById(R.id.mainMenuButton);
+        centerMainMenu = (Button)findViewById(R.id.button_CenterMain);
 
 
         //check to see if there's a savedInstanceState, meaning there was a screen rotation. If so reassign values with the saved state versions from bundle
@@ -87,13 +90,26 @@ public class MathGameplay extends AppCompatActivity {
             divNums = savedInstanceState.getIntArray("divisibleNums");
             possibleAnswers = savedInstanceState.getIntegerArrayList("posAns");
             setViews();
-            beginTimer();
+            if(Music.freePlay){
+                timer.setText("∞");
+                backToMain.setGravity(Gravity.CENTER_HORIZONTAL);
+                backToMain.setVisibility(View.VISIBLE);
+            }
+            else{
+                beginTimer();
+            }
         }
         else {
             score.setText("0/0");
             assignInitialValues();
             run();
-            beginTimer();
+            if(Music.freePlay){
+                timer.setText("∞");
+                centerMainMenu.setVisibility(View.VISIBLE);
+            }
+            else{
+                beginTimer();
+            }
         }
     }
 

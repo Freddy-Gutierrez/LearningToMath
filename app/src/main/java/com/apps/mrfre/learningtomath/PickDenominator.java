@@ -20,6 +20,7 @@ public class PickDenominator extends AppCompatActivity {
         Button pressed = (Button)view;
         Intent i = new Intent(PickDenominator.this, MathGameplay.class);
         //save game difficulty from button and operator
+        i.putExtra("title", "DIVISION: " + pressed.getText().toString());
         i.putExtra("dif", pressed.getText().toString());
         i.putExtra("op", userChar);
         startActivity(i);

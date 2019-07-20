@@ -118,6 +118,23 @@
         android:textColor="@android:color/black"
         android:textSize="36sp" />
 
+    <Button
+        android:id="@+id/button_CenterMain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="false"
+        android:layout_centerVertical="false"
+        android:layout_marginEnd="351dp"
+        android:layout_marginRight="351dp"
+        android:layout_marginBottom="36dp"
+        android:onClick="backToMain"
+        android:text="Main Menu"
+        android:textSize="18sp"
+        android:visibility="invisible" />
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

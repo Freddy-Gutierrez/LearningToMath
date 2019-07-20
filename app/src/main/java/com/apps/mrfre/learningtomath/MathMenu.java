@@ -28,6 +28,7 @@ public class MathMenu extends AppCompatActivity {
         Button pressed = (Button)view;
         Intent i = new Intent(MathMenu.this, MathGameplay.class);
         //save game difficulty from button and operator
+        i.putExtra("title", pressed.getText().toString());
         i.putExtra("dif", pressed.getText().toString());
         i.putExtra("op", userChar);
         startActivity(i);

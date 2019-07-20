@@ -79,4 +79,18 @@
         android:textSize="24sp"
         android:textStyle="bold" />
 
+    <Button
+        android:id="@+id/button_freeplay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/backButton"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:onClick="isFreePlay"
+        android:text="Free Play : Off"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
 </RelativeLayout>

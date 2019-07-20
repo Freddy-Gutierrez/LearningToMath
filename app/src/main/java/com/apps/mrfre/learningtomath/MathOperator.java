@@ -3,17 +3,39 @@ package com.apps.mrfre.learningtomath;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
 public class MathOperator extends AppCompatActivity {
+
+    Button bFreePlay;
+    boolean freePlay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_math_operator);
         setTitle("Operators");
+        bFreePlay = (Button)findViewById(R.id.button_freeplay);
         MainActivity.isPlaying = true;
+        //check to see if there's a savedInstanceState, meaning there was a screen rotation. If so reassign values with the saved state versions from bundle
+        if(savedInstanceState != null){
+            Music.freePlay = savedInstanceState.getBoolean("freePlay");
+            Music.freePlayValue = savedInstanceState.getString("freePlayValue");
+            bFreePlay.setText(Music.freePlayValue);
+        }
+        else {
+            bFreePlay.setText(Music.freePlayValue);
+        }
+    }
+
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putBoolean("freePlay", Music.freePlay);
+        outState.putString("freePlayValue", Music.freePlayValue);
     }
 
     public void getChar(View view) {
@@ -24,6 +46,8 @@ public class MathOperator extends AppCompatActivity {
         if(charPressed == 'x'){
             i = new Intent(MathOperator.this, MathGameplay.class);
             i.putExtra("op", charPressed);
+            i.putExtra("title", "MULTIPLICATION");
+            i.putExtra("dif", "Multiplication");
             startActivity(i);
             finish();
         }
@@ -46,5 +70,18 @@ public class MathOperator extends AppCompatActivity {
         Intent i = new Intent(MathOperator.this, MainActivity.class);
         startActivity(i);
         finish();
+    }
+
+    public void isFreePlay(View view) {
+        if(Music.freePlay == false){
+            Music.freePlay = true;
+            Music.freePlayValue = "Free Play : On";
+            bFreePlay.setText(Music.freePlayValue);
+        }
+        else{
+            Music.freePlay = false;
+            Music.freePlayValue = "Free Play : Off";
+            bFreePlay.setText(Music.freePlayValue);
+        }
     }
 }
